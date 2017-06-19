@@ -31,6 +31,17 @@ export function saveFeed(obj) {
   }
 }
 
+export function removeFeed(obj) {
+  console.log(obj);
+  return function(dispatch) {
+    dispatch({type: "DELETE_FEED"});
+    axios.delete('https://rss-reader-backend.herokuapp.com/PersonalFeeds/' + obj)
+      .then((res) => {
+        dispatch({type: "DELETE_FEED_SUCCESS", payload: res})
+      })
+  }
+}
+
 export function loadUsers() {
   return function(dispatch) {
     dispatch({type: "LOAD_USERS"});

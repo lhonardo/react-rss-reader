@@ -7,15 +7,14 @@ class FeedsList extends React.Component {
     var posts = [];
     for (var j = 0; j < feeds.length; j++){
       posts.push(
-        <div key={j}>
-          <a target="_blank" href={feeds[j]["link"]}>
-            <h3>{feeds[j]["title"]}</h3>
-            <p>{feeds[j]["description"]}</p>
-            <span>{feeds[j]["pubDate"]}</span>
-            <span>{feeds[j]["author"]}</span>
-            <img src={feeds[j]["image"]}></img>
-          </a>
-          <i id={j} onClick={(e) => this.props.saveFeed(e)}>save feed</i>
+        <div className="jumbotron" key={j}>
+          <h1>{feeds[j]["title"]}</h1>
+          <img src={feeds[j]["image"]}/>
+          <p>{feeds[j]["description"]}</p>
+          <p>{feeds[j]["pubDate"]}</p>
+          <p>{feeds[j]["author"]}</p>
+          <a className="btn btn-primary btn-lg" target="_blank" href={feeds[j]["link"]}>Leia mais</a>
+          <a className="btn btn-primary btn-lg pull-right" href="#" id={j} onClick={(e) => this.props.saveFeed(e)}>Salvar este feed</a>
         </div>
       );
     }
